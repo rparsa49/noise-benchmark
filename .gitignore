@@ -1,0 +1,6 @@
+venv/
+processed_images/
+results/
+requirements.txt
+__pycache__/
+test_images/
