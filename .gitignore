@@ -4,3 +4,6 @@ results/
 requirements.txt
 __pycache__/
 test_images/
+plots/
+validation/
+.DS_Store
