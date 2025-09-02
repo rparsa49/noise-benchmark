@@ -32,22 +32,12 @@ def rho_e_hunemohr(HU_h, HU_l, c):
     HU_l: CT Number at Low Energy
     c: calibration parameter
     '''
-    return c * (HU_h/1000 + 1) + (1 - c) * (HU_l/1000) + 1
+    return c * (HU_h/1000 + 1) + (1 - c) * ((HU_l/1000) + 1)
 
 def z_eff_hunemohr(n_i, Z_i, n=3.1):
     num = np.sum(n_i * (Z_i ** (n + 1)))
     den = np.sum(n_i * Z_i)
     return (num / den) ** (1 / n)
-
-# def spr_hunemohr(rho, Z, kvp):
-#     '''
-#     Hunemohr 2014
-#     rho: Electron density ratio of the material to water
-#     Z: Effective atomic number
-#     '''
-#     a = 0.125 if Z <= 8.5 else 0.098
-#     b = 3.378 if Z <= 8.5 else 3.376
-#     return (rho * ((12.77 - (a * Z + b)) / 8.45)) / WATER_SPR.get(str(kvp))
 
 def beta(kvp=200):
     kinetic_energy_mev = kvp / 1000
@@ -55,29 +45,56 @@ def beta(kvp=200):
     gamma = (proton_mass_mev + kinetic_energy_mev) / proton_mass_mev
     return np.sqrt(1 - (1 / gamma ** 2)) ** 2
 
-# Get I_material from ln I / Iw
-def get_I(mean_exciation):
-    return 75 * (np.e ** mean_exciation)
-
-def spr_bethe(rho, I, beta):
+# Reference I values (Bär 2018)
+def ref_I(material):
     '''
-    rho: electron density ratio to water
-    I, Iw: Mean excitation energies of the material and water
-    me: rest electron mass
-    c: speed of light in a vacuum
-    beta: speed of the projectile proton relative to that of light
+    Bragg Additivity Rule for the mean excitation energy of a compound
+    ln I_med = Sum_j lambda_med, i, j * ln I_elem, j
+    lambda_med, i, j = w_med,i,j * (Z_j / A_j) / (Z/A)_med,i
+    (Z/A)_med,i = sum_j w_men,i,j * (Z_j / A_j)
     '''
-    me = 9.10938356e-31
-    c = 2.99792458e8
-    Iw = 75
+    icru_key = "I_ICRU1993_eV"
+    comp = MATERIAL_PROPERTIES[material]["composition"]
+    elements = list(comp.keys())
+    w = np.array([comp[e] for e in elements])
     
-    term1 = (np.log(2*me * (c ** 2) * beta)) / (I - beta) - beta
-    term2 = (np.log(2*me * (c ** 2) * beta)) / (Iw - beta) - beta
-    return rho * (term1/term2)
+    # normalize
+    w_sum = w.sum()
+    w = w / w_sum
+    
+    # gather elemental data
+    Z = np.array([ELEMENTAL_PROPERTIES[e]["number"] for e in elements])
+    A = np.array([ELEMENTAL_PROPERTIES[e]["mass"] for e in elements])
+    I_elem = np.array([ELEMENTAL_PROPERTIES[e][icru_key] for e in elements])
+    
+    # (Z/A)_med
+    ZA_med = float(np.sum(w * (Z / A)))
+    
+    # Electron-fraction weights lambda_j
+    lambda_arr = (w * (Z  / A)) / ZA_med
+    
+    # BAR estimator for I_med
+    ln_I_med = float(np.sum(lambda_arr * np.log(I_elem)))
+    return float(np.exp(ln_I_med))
+    
+# Fit I 
+def fit_I(Zs, Is):
+    Z_arr = np.array(Zs)
+    lnI_arr = np.log(np.array(Is))
+    
+    # linear regression for coefficients
+    coeffs = np.polyfit(Z_arr, lnI_arr, 1)
+    a, b = coeffs[0], coeffs[1]
+    
+    return a, b
 
-# True Mean Excitation Energy (Courtesy of Milo V.)
-def i_truth(weight_fractions, Num, A, I):
-    return sum(weight_fractions * Num / A * np.log(I)) / sum(weight_fractions * Num / A)
+# Hunemohr 2014 eq. 2
+def hunemohr_I(a, b, Z):
+    return a * Z + b
+
+# Hunemohr 2014 eq. 3
+def spr_hunemohr(rho, I):
+    return rho * ((12.77 - I) / 8.45)                                    
 
 # Fitting Functions
 def optimize_c(HU_H_List, HU_L_List, true_rho_list, materials_list):
@@ -140,15 +157,17 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
     
     HU_H_List, HU_L_List, materials_list = [], [], []
     calculated_rhos, calculated_zeffs = [], []
+    reference_I, calculated_I = [], []
+    a = 0
+    b = 0
     optimized_zs = []
     sprs = []
-    mean_excitations = []
     c = 0
     SAVED_CIRCLES = CIRCLE_DATA[phantom_type]
 
     for circle in SAVED_CIRCLES:
         x, y, radius, material = circle["x"], circle["y"], circle["radius"], circle["material"]
-        if material not in TRUE_RHO or material == '50% CaCO3' or material == '30% CaCO3':
+        if material not in TRUE_RHO or material == '50% CaCO3' or material == '30% CaCO3' or material in materials_list:
             print(f"Warning: Material '{material}' not found in TRUE_RHO.")
             continue
         
@@ -194,32 +213,22 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
         opt_z = calculate_zeff_optimized(rhos, zeff_w, x1,  x2, d_e)
         optimized_zs.append(opt_z)
     
+    # Step 5: Calculate Reference I and get fitted a, b
+    for material in materials_list:
+        I_ref = ref_I(material)
+        reference_I.append(I_ref)
+    
+    a, b = fit_I(optimized_zs, reference_I)
+    
     # Step 6: Calculate Mean Excitation Energy
-    for mat in materials_list:
-        comp = MATERIAL_PROPERTIES[mat]["composition"]
-        elements = list(comp.keys())
-        fraction = np.array([comp[e] for e in elements])
-
-        atomic_numbers = np.array(
-            [ELEMENTAL_PROPERTIES[e]["number"] for e in elements])
-        atomic_masses = np.array(
-            [ELEMENTAL_PROPERTIES[e]["mass"] for e in elements])
-        ionization_energies = np.array(
-            [ELEMENTAL_PROPERTIES[e]["ionization"] for e in elements])
-
-        i = i_truth(fraction, atomic_numbers,
-                    atomic_masses, ionization_energies)
-        mean_excitations.append(i)
+    for Z in optimized_zs:
+        I_optimized = hunemohr_I(a, b, Z)
+        calculated_I.append(I_optimized)
         
     # Step 4: Stopping power
-    for i, rho, mat in zip(mean_excitations, calculated_rhos, materials_list):
-        I = get_I(i)
-        beta2 = beta()
-        spr = spr_bethe(rho, I, beta2)
-        sprs.append(spr)
-    # for rho, z in zip(calculated_rhos, calculated_zeffs):
-    #     spr = spr_hunemohr(rho, z, dicom_data_h.KVP)
-    #     sprs.append(spr)
+    for i, rho in zip(calculated_I, calculated_rhos):
+        spr_calc = spr_hunemohr(rho, i)
+        sprs.append(spr_calc)
     
     for mat, rho in zip(materials_list, calculated_rhos):
         print(f"Material: {mat} with electron density of {rho}")
@@ -261,3 +270,29 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
     }
     
     return json.dumps(results, indent=4)
+
+# body phantom (70/140) st = 0.6 WORKS
+# low_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-70/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200010685.dcm"
+# high_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-140/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200014213.dcm"
+
+# body phantom 80-100 st = 0.6 NOT WORK R2 FOR Z = -0.12
+# low_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200011576.dcm"
+# high_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200012476.dcm"
+
+# head phantom (70/ 140) st = 3 NOT WORK R2 FOR Z = 0.33
+# low_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-70/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200019565.dcm"
+# high_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-140/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200021189.dcm"
+
+# works head phantom 80/100 st = 0.6 WORK
+# high_path = "/Users/royaparsa/Desktop/Head-0.6/Head-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020329.dcm"
+# low_path = "/Users/royaparsa/Desktop/Head-0.6/Head-Abdomen-0.6-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020022.dcm"
+
+# works head phantom (80/100) st = 3 WORK
+# high_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020560.dcm"
+# low_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200019893.dcm"
+
+# works (80/100) st = 3 WORK
+# high_path = "/Users/royaparsa/Downloads/test-data/high/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020533.dcm"
+# low_path = "/Users/royaparsa/Downloads/test-data/low/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020240.dcm"
+
+# hunemohr(high_path, low_path, "Body", 1)
