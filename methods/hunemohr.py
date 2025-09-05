@@ -22,7 +22,6 @@ ELEMENTAL_PROPERTIES = load_json("element_properties.json")
 
 # True electron densities and Zeffs for materials
 TRUE_RHO = {mat: MATERIAL_PROPERTIES[mat]["rho_e_w"]for mat in MATERIAL_PROPERTIES}
-TRUE_ZEFF = {mat: MATERIAL_PROPERTIES[mat]["Z_eff"]for mat in MATERIAL_PROPERTIES}
 
 # Hunemohr Functions
 def rho_e_hunemohr(HU_h, HU_l, c):
@@ -111,7 +110,7 @@ def optimize_c(HU_H_List, HU_L_List, true_rho_list, materials_list):
 '''
 True values of Z_eff to use in fitting
 '''
-def calculate_zeff_hunemohr(material):
+def calculate_ref_zeff_hunemohr(material):
     composition = MATERIAL_PROPERTIES[material]["composition"]
 
     elements = list(composition.keys())
@@ -167,7 +166,7 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
 
     for circle in SAVED_CIRCLES:
         x, y, radius, material = circle["x"], circle["y"], circle["radius"], circle["material"]
-        if material not in TRUE_RHO or material == '50% CaCO3' or material == '30% CaCO3' or material in materials_list:
+        if material not in TRUE_RHO or material in materials_list:
             print(f"Warning: Material '{material}' not found in TRUE_RHO.")
             continue
         
@@ -202,11 +201,11 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
     
     # Step 3: Calculate true zeff
     for mat in materials_list:
-        calculated_z = calculate_zeff_hunemohr(mat)
+        calculated_z = calculate_ref_zeff_hunemohr(mat)
         calculated_zeffs.append(calculated_z)
     
     # Step 4: Calculate optimized zeff
-    zeff_w = calculate_zeff_hunemohr("True Water")
+    zeff_w = calculate_ref_zeff_hunemohr("True Water")
     # zeff_w = 7
     d_e = fit_zeff(calculated_rhos, zeff_w, calculated_zeffs, HU_H_List, HU_L_List)
     for rhos, x1, x2 in zip(calculated_rhos, HU_H_List, HU_L_List):
@@ -270,29 +269,3 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
     }
     
     return json.dumps(results, indent=4)
-
-# body phantom (70/140) st = 0.6 WORKS
-# low_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-70/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200010685.dcm"
-# high_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-140/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200014213.dcm"
-
-# body phantom 80-100 st = 0.6 NOT WORK R2 FOR Z = -0.12
-# low_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200011576.dcm"
-# high_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200012476.dcm"
-
-# head phantom (70/ 140) st = 3 NOT WORK R2 FOR Z = 0.33
-# low_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-70/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200019565.dcm"
-# high_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-140/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200021189.dcm"
-
-# works head phantom 80/100 st = 0.6 WORK
-# high_path = "/Users/royaparsa/Desktop/Head-0.6/Head-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020329.dcm"
-# low_path = "/Users/royaparsa/Desktop/Head-0.6/Head-Abdomen-0.6-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020022.dcm"
-
-# works head phantom (80/100) st = 3 WORK
-# high_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020560.dcm"
-# low_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200019893.dcm"
-
-# works (80/100) st = 3 WORK
-# high_path = "/Users/royaparsa/Downloads/test-data/high/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020533.dcm"
-# low_path = "/Users/royaparsa/Downloads/test-data/low/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020240.dcm"
-
-# hunemohr(high_path, low_path, "Body", 1)
