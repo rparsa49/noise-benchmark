@@ -49,11 +49,10 @@ def reduce_ct(HU):
 
 # Saito 2017a Eq. 8 - LHS
 def zeff_lhs(zeff):
-    return (zeff / 7.45) ** 3.3
+    return ((zeff / 7.45) ** 3.3) - 1
 
 # Saito 2017a Eq. 8 - RHS
 def zeff_rhs(gamma, ct, rho):
-    v = gamma * ((ct/rho) - 1)
     return gamma * ((ct/rho) - 1)
 
 # Hunemohr 2014 Eq. 21 - Effective Atomic Number
@@ -290,7 +289,7 @@ def tanaka(high_path, low_path, phantom_type, radii_ratios):
         x, y, radius, material = circle["x"], circle["y"], circle["radius"], circle["material"]
 
         if material not in TRUE_RHO or material == '50% CaCO3' or material == '30% CaCO3':
-            print(f"Warning: Material '{material}' not found in TRUE_RHO.")
+            # print(f"Warning: Material '{material}' not found in TRUE_RHO.")
             continue
     
         materials_list.append(material)
@@ -313,7 +312,7 @@ def tanaka(high_path, low_path, phantom_type, radii_ratios):
     
     # Step 1: Get optimized alpha
     alpha, a, b, r = optimize_alpha(HU_H_List, HU_L_List, TRUE_RHO, materials_list)
-    print(f"Alpha: {alpha}\n a: {a}\n b: {b}\n r: {r}\n")
+    # print(f"Alpha: {alpha}\n a: {a}\n b: {b}\n r: {r}\n")
     
     deltas = []
     for HU_H, HU_L in zip(HU_H_List, HU_L_List):
@@ -325,8 +324,8 @@ def tanaka(high_path, low_path, phantom_type, radii_ratios):
         rho = rho_e_calc(delta, a, b)
         calculated_rhos.append(rho)
 
-    for mat, rho in zip(materials_list, calculated_rhos):
-        print(f"Material: {mat} with electron density of {rho}")
+    # for mat, rho in zip(materials_list, calculated_rhos):
+    #     print(f"Material: {mat} with electron density of {rho}")
     
     # Step 3: Calculate reduced CT
     reduced_ct = [reduce_ct(hl) for hl in HU_L_List]
@@ -334,13 +333,14 @@ def tanaka(high_path, low_path, phantom_type, radii_ratios):
     # Step 4: Optimize Gamma using true Z_Eff and estimated rho
     zeff_list = [TRUE_ZEFF[mat] for mat in materials_list]
     gamma = optimize_gamma(zeff_list, reduced_ct, calculated_rhos)
-    print(f"Gamma is: {gamma}")
+    # print(f"Gamma is: {gamma}")
     
     # Step 5: Calculate estimated Z ratios
     calculated_z_ratios = [(zeff_rhs(gamma, ct, rho)) for ct, rho in zip(reduced_ct, calculated_rhos)]
 
     # Convert ratios to Z_eff
-    calculated_z_effs = [(np.abs(zeff_rhs(gamma, ct, rho)) ** (1/3.3) * 7.45)for ct, rho in zip(reduced_ct, calculated_rhos)]
+    calculated_z_effs = [(zeff_rhs(gamma, ct, rho) + 1) ** (1/3.3)
+                        * 7.45 for ct, rho in zip(reduced_ct, calculated_rhos)]
 
     # Calculate optimized Z_eff
     # Step 4: Calculate optimized zeff
@@ -365,19 +365,19 @@ def tanaka(high_path, low_path, phantom_type, radii_ratios):
         i = i_truth(fraction, atomic_numbers, atomic_masses, ionization_energies)
         true_mean_excitation.append(i)
 
-    print(f"True I: {true_mean_excitation}")
-    print(f"Calculated Zs: {calculated_z_ratios}")
+    # print(f"True I: {true_mean_excitation}")
+    # print(f"Calculated Zs: {calculated_z_ratios}")
 
     # Step 6: Optimize c0 and c1 for mean excitation energy using Tanaka 2020 eq. 6
     c0, c1 = optimize_c(true_mean_excitation, calculated_z_ratios)
 
-    print(f"C0: {c0} \nC1: {c1}")
+    # print(f"C0: {c0} \nC1: {c1}")
 
     for z_ratio in calculated_z_ratios:
         i_tanaka_val = i_tanaka(z_ratio, c0, c1)
         calculated_mean_excitation.append(i_tanaka_val)
 
-    print(f"Tanaka I: {calculated_mean_excitation}")
+    # print(f"Tanaka I: {calculated_mean_excitation}")
     # Step 7: Calculate stopping power
     for t, rho, mat in zip(calculated_mean_excitation, calculated_rhos, materials_list):
         I = get_I(t)
