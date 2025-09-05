@@ -24,7 +24,6 @@ ELEMENTAL_PROPERTIES = load_json("element_properties.json")
 
 # True electron densities and Zeffs for materials
 TRUE_RHO = {mat: MATERIAL_PROPERTIES[mat]["rho_e_w"]for mat in MATERIAL_PROPERTIES}
-TRUE_ZEFF = {mat: MATERIAL_PROPERTIES[mat]["Z_eff"]for mat in MATERIAL_PROPERTIES}
 RHO_W = 3.342801000466205e+23
 
 def delta_HU(alpha, high, low):
@@ -60,6 +59,20 @@ def reduce_ct(HU):
     return: linear attenuation coefficient
     '''
     return HU/1000 + 1
+
+# Calculate Reference Zs (Eq. 10)
+def saito_reference_z(mat):
+    composition = MATERIAL_PROPERTIES[mat]["composition"]
+
+    elements = list(composition.keys())
+    fractions = np.array([composition[el] for el in elements])
+    atomic_numbers = np.array([ATOMIC_NUMBERS[el] for el in elements])
+    return z_eff_saito(fractions, atomic_numbers, 3.1)
+
+def z_eff_saito(n_i, Z_i, n=3.1):
+    num = np.sum(n_i * (Z_i ** (n + 1)))
+    den = np.sum(n_i * Z_i)
+    return (num / den) ** (1 / n)
 
 # Saito 2017a Eq. 8 - LHS
 def zeff_lhs(zeff):
@@ -115,7 +128,6 @@ def optimize_alpha(HU_H_LIST, HU_L_LIST, true_rho_list, materials_list):
 
         for HU_H, HU_L, material in zip(HU_H_LIST, HU_L_LIST, materials_list):
             if material in true_rho_list:
-                # delta_HU = ((1 + alpha) * HU_H) - (alpha * HU_L)
                 delta = delta_HU(alpha, HU_H, HU_L)
                 deltas.append(delta / 1000)  # acts as x
                 true_rhos.append(true_rho_list[material])  # acts as y
@@ -154,9 +166,6 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
     high_image = dicom_data_h.pixel_array
     low_image = dicom_data_l.pixel_array
 
-    # print(dicom_data_h.RescaleSlope)
-    # print(dicom_data_h.RescaleIntercept)
-
     HU_H_List, HU_L_List, materials_list = [], [], []
     calculated_rhos = []
     mean_excitations = []
@@ -167,8 +176,7 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
     
     for circle in saved_circles:
         x, y, radius, material = circle["x"], circle["y"], circle["radius"], circle["material"]
-        if material not in TRUE_RHO or material == '50% CaCO3' or material == '30% CaCO3':
-            print(f"Warning: Material '{material}' not found in TRUE_RHO.")
+        if material not in TRUE_RHO or material in materials_list:
             continue
         
         if material not in materials_list:
@@ -188,8 +196,8 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
             HU_L_List.append(mean_low_hu)
     
     
-    print(f"High HU List: {HU_H_List}\n")
-    print(f"Low HU List: {HU_L_List}\n")
+    # print(f"High HU List: {HU_H_List}\n")
+    # print(f"Low HU List: {HU_L_List}\n")
 
     # Step 1: Optimize alpha, a, b for delta HU        
     alpha, a, b, r = optimize_alpha(HU_H_List, HU_L_List, TRUE_RHO, materials_list)
@@ -212,9 +220,13 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
     reduced_ct = [reduce_ct(hl) for hl in HU_L_List]
     
     # Step 4: Optimize gamma using true Zeff and estimated rho
-    zeff_list = [TRUE_ZEFF[mat] for mat in materials_list]
-
-    gamma = optimize_gamma(zeff_list, reduced_ct, calculated_rhos)
+    # First, calculate reference Z values
+    reference_zs = []
+    for mat in materials_list:
+        val = saito_reference_z(mat)
+        reference_zs.append(val)
+        
+    gamma = optimize_gamma(reference_zs, reduced_ct, calculated_rhos)
     
     print(f"Gamma is {gamma}")
       
@@ -297,8 +309,8 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
 # high_path = "/Users/royaparsa/Desktop/Body-0.6/Body-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200012476.dcm"
 
 # gamma = 9.99, RMSE for Z = 3.86, r2 for Z = 0.1885
-low_path = "/Users/royaparsa/Downloads/20240513/Body-Abdomen-0.6-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200011603.dcm"
-high_path = "/Users/royaparsa/Downloads/20240513/Body-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200012486.dcm"
+# low_path = "/Users/royaparsa/Downloads/20240513/Body-Abdomen-0.6-80/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200011603.dcm"
+# high_path = "/Users/royaparsa/Downloads/20240513/Body-Abdomen-0.6-100/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200012486.dcm"
 
 # head phantom (70/ 140) st = 3 NOT WORK R2Z = -0.62
 # low_path = "/Users/royaparsa/Desktop/Head-3/Head-Abdomen-3-70/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200019565.dcm"
