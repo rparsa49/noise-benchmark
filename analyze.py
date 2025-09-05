@@ -24,24 +24,12 @@ def load_truth(path: Path):
 
     true_rho = {}
     true_z = {}
+    rho_key = "rho_e_w"
+    z_key = "Z_eff"
     for mat, vals in truth.items():
-
-        rho_key = None
-        for k in ("rho_e_w", "rho_e", "rho", "N"):  
-            if k in vals:
-                rho_key = k
-                break
-        z_key = None
-        for k in ("Z_eff", "z_eff", "Z", "z"):
-            if k in vals:
-                z_key = k
-                break
-        if rho_key is None or z_key is None:
-            continue
         true_rho[mat] = vals[rho_key]
         true_z[mat] = vals[z_key]
     return true_rho, true_z
-
 
 def rmse_relative(preds, truths):
     """
