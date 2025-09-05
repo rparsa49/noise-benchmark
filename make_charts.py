@@ -18,18 +18,6 @@ def infer_method_from_path(p: str) -> str:
     return "Unknown"
 
 
-def to_float(s):
-    if s is None:
-        return None
-    try:
-        return float(s)
-    except Exception:
-        try:
-            return float(re.sub(r"[^0-9.+-eE]", "", str(s)))
-        except Exception:
-            return None
-
-
 if not SELECTED_CSV.exists():
     raise FileNotFoundError(
         f"Missing {SELECTED_CSV}. Run the selection script first."
@@ -41,9 +29,9 @@ with SELECTED_CSV.open("r", newline="") as f:
     for row in r:
         method = infer_method_from_path(row.get("selected_file", ""))
         thickness = str(row.get("thickness"))
-        radius = to_float(row.get("radius"))
+        radius = float(row.get("radius"))
         kvp_pair = str(row.get("kvp_pair"))  
-        noise = to_float(row.get("noise_level"))
+        noise = float(row.get("noise_level"))
         rmse_rho = row.get("rmse_rel_rho")
         rmse_z = row.get("rmse_rel_z")
         phantom_type = row.get("phantom")
