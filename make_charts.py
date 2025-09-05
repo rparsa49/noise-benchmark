@@ -46,6 +46,7 @@ with SELECTED_CSV.open("r", newline="") as f:
         noise = to_float(row.get("noise_level"))
         rmse_rho = row.get("rmse_rel_rho")
         rmse_z = row.get("rmse_rel_z")
+        phantom_type = row.get("phantom")
         if None in (radius, noise) or rmse_rho is None or rmse_z is None:
             continue
         rows.append({
@@ -56,6 +57,7 @@ with SELECTED_CSV.open("r", newline="") as f:
             "noise": noise,
             "rmse_rho": float(rmse_rho),
             "rmse_z": float(rmse_z),
+            "phantom": phantom_type
         })
 
 # Collapse duplicates across phantoms (if any):
@@ -63,7 +65,7 @@ with SELECTED_CSV.open("r", newline="") as f:
 # using the minimal combined error.
 best_by_noise = {}
 for r in rows:
-    key = (r["method"], r["thickness"], r["radius"], r["kvp_pair"], r["noise"])
+    key = (r["method"], r["thickness"], r["radius"], r["kvp_pair"], r["noise"], r["phantom"])
     combo = 0.5 * (r["rmse_rho"] + r["rmse_z"])
     if key not in best_by_noise or combo < best_by_noise[key]["combo"]:
         best_by_noise[key] = {"rmse_rho": r["rmse_rho"],
@@ -71,14 +73,14 @@ for r in rows:
 
 # Regroup for plotting: (method, thickness, radius, kvp_pair) -> list of items
 groups = defaultdict(list)
-for (method, thickness, radius, kvp, noise), vals in best_by_noise.items():
-    groups[(method, thickness, radius, kvp)].append(
+for (method, thickness, radius, kvp, noise, phantom), vals in best_by_noise.items():
+    groups[(method, thickness, radius, kvp, phantom)].append(
         {"noise": noise,
             "rmse_rho": vals["rmse_rho"], "rmse_z": vals["rmse_z"]}
     )
 
 count = 0
-for (method, thickness, radius, kvp_pair), items in groups.items():
+for (method, thickness, radius, kvp_pair, phantom), items in groups.items():
     # sort by noise for nice x ordering
     items.sort(key=lambda d: d["noise"])
 
@@ -93,14 +95,14 @@ for (method, thickness, radius, kvp_pair), items in groups.items():
     plt.xlabel("Noise Level")
     plt.ylabel("RMSE (relative)")
     plt.title(
-        f"{method}, slice thickness = {thickness}, radius = {radius}, kVp = {kvp_pair}")
+        f"{method}, slice thickness = {thickness}, radius = {radius}, kVp = {kvp_pair}, phantom = {phantom}")
     plt.grid(True, linestyle="--", alpha=0.6)
     plt.legend(loc="best", title="Metric")
     plt.tight_layout()
 
     def safe(s): return re.sub(r"[^A-Za-z0-9._-]+", "_", str(s))
     out = OUT_DIR / \
-        f"{safe(method)}_th{safe(thickness)}_r{safe(radius)}_kvp{safe(kvp_pair)}.png"
+        f"{safe(method)}_th{safe(thickness)}_r{safe(radius)}_kvp{safe(kvp_pair)}_phantom{safe(phantom)}.png"
     plt.savefig(out, dpi=180)
     plt.close()
     count += 1
