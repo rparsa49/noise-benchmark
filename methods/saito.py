@@ -1,14 +1,13 @@
 import numpy as np
 from pathlib import Path
 import json
-from scipy.optimize import minimize_scalar, minimize
-import sys
+from scipy.optimize import minimize_scalar
 import pydicom
 import cv2
 from scipy.constants import physical_constants
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
+
 
 DATA_DIR = Path("data")
 
@@ -25,6 +24,7 @@ ELEMENTAL_PROPERTIES = load_json("element_properties.json")
 # True electron densities and Zeffs for materials
 TRUE_RHO = {mat: MATERIAL_PROPERTIES[mat]["rho_e_w"]for mat in MATERIAL_PROPERTIES}
 RHO_W = 3.342801000466205e+23
+TRUE_ZEFF = {mat: MATERIAL_PROPERTIES[mat]["Z_eff"]for mat in MATERIAL_PROPERTIES}
 
 def delta_HU(alpha, high, low):
     '''
@@ -69,7 +69,7 @@ def saito_reference_z(mat):
     atomic_numbers = np.array([ATOMIC_NUMBERS[el] for el in elements])
     return z_eff_saito(fractions, atomic_numbers, 3.1)
 
-def z_eff_saito(n_i, Z_i, n=3.1):
+def z_eff_saito(n_i, Z_i, n):
     num = np.sum(n_i * (Z_i ** (n + 1)))
     den = np.sum(n_i * Z_i)
     return (num / den) ** (1 / n)
@@ -81,7 +81,7 @@ def zeff_lhs(zeff):
 # Saito 2017a Eq. 8 - RHS
 def zeff_rhs(gamma, ct, rho):
     return gamma * ((ct/rho) - 1)
-
+    
 # Tanaka 2020 Eq. 1 - Stopping Power
 def spr_tanaka(rho, I, beta):
     '''
@@ -147,6 +147,7 @@ def optimize_alpha(HU_H_LIST, HU_L_LIST, true_rho_list, materials_list):
 
     return best_alpha, best_a, best_b, best_r2
 
+# Eq. 8
 def optimize_gamma(zeff_list, ct_list, rho_list):
     def objective(gamma):
         errors = []
@@ -194,10 +195,6 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
             # Create HU lists
             HU_H_List.append(mean_high_hu)
             HU_L_List.append(mean_low_hu)
-    
-    
-    # print(f"High HU List: {HU_H_List}\n")
-    # print(f"Low HU List: {HU_L_List}\n")
 
     # Step 1: Optimize alpha, a, b for delta HU        
     alpha, a, b, r = optimize_alpha(HU_H_List, HU_L_List, TRUE_RHO, materials_list)
@@ -219,23 +216,23 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
     # Step 3: Calculate reduced CT
     reduced_ct = [reduce_ct(hl) for hl in HU_L_List]
     
-    # Step 4: Optimize gamma using true Zeff and estimated rho
-    # First, calculate reference Z values
-    reference_zs = []
-    for mat in materials_list:
-        val = saito_reference_z(mat)
-        reference_zs.append(val)
+    # First, get reference Z values
+    zeff_list = [TRUE_ZEFF[mat] for mat in materials_list]
         
-    gamma = optimize_gamma(reference_zs, reduced_ct, calculated_rhos)
-    
-    print(f"Gamma is {gamma}")
+    gamma = optimize_gamma(zeff_list, reduced_ct, calculated_rhos)
+    print(f"\nGamma is {gamma}\n")
       
-    # Step 5: Calculate estimated Zeff (take out abs)
+    # Step 5: Calculate estimated Zeff
+    calculated_zeffs = [(zeff_rhs(gamma, ct, rho) + 1) ** (1/3.3) * 7.45 for ct, rho in zip(reduced_ct, calculated_rhos)]
+
+    for mat, z in zip(materials_list, calculated_zeffs):
+        print(f"Material: {mat}'s calculated Z: {z}")
+    
     calculated_zeffs = [(zeff_rhs(gamma, ct, rho) + 1) ** (1/3.3) * 7.45 for ct, rho in zip(reduced_ct, calculated_rhos)]
 
     for mat, z in zip(materials_list, calculated_zeffs):
         print(f"Material: {mat}'s calculated Z: {z} and true Z: {MATERIAL_PROPERTIES[mat]['Z_eff']}")
-    
+
     # Step 6: Calculate Mean Excitation Energy
     for mat in materials_list:
         comp = MATERIAL_PROPERTIES[mat]["composition"]
@@ -262,7 +259,7 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
         ground_rho.append(MATERIAL_PROPERTIES[mat]["rho_e_w"])
     rmse_rho = mean_squared_error(ground_rho, calculated_rhos)
     r2_rho = r2_score(ground_rho, calculated_rhos)
-    print(f"RMSE for Rho: {rmse_rho}")
+    print(f"\n\nRMSE for Rho: {rmse_rho}")
     print(f"r2 for Rho: {r2_rho}")
 
     ground_z = []
@@ -273,7 +270,7 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
     print(f"RMSE for Z: {rmse_z}")
     print(f"r2 for Z: {r2_z}")
 
-    print(f"R2 for lin reg {r}\n\n")
+    print(f"R2 for lin reg for alpha: {r}\n\n")
     
     # Return JSON
     results = {
@@ -328,4 +325,4 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
 # high_path = "/Users/royaparsa/Downloads/test-data/high/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020533.dcm"
 # low_path = "/Users/royaparsa/Downloads/test-data/low/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020240.dcm"
 
-# saito(high_path, low_path, "Body", 1)
+saito(high_path, low_path, "Body", 1)
