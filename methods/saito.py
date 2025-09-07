@@ -325,4 +325,4 @@ def saito(high_path, low_path, phantom_type, radii_ratios):
 # high_path = "/Users/royaparsa/Downloads/test-data/high/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020533.dcm"
 # low_path = "/Users/royaparsa/Downloads/test-data/low/CT1.3.12.2.1107.5.1.4.83775.30000024051312040257200020240.dcm"
 
-saito(high_path, low_path, "Body", 1)
+# saito(high_path, low_path, "Body", 1)
