@@ -8,7 +8,7 @@ import csv
 TRUTH_PATH = Path("true_mats.json")
 
 # Base folder that contains many ...comparison_*.json files (Saito/Tanaka/Hunemohr etc.)
-RESULTS_DIR = Path("results")    
+RESULTS_DIR = Path("../results")    
 GLOB_PATTERN = "**/*comparison_*.json" 
 
 

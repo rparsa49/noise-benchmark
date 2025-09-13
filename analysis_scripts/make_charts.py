@@ -2,11 +2,10 @@ import csv
 import re
 from pathlib import Path
 from collections import defaultdict
-import math
 import matplotlib.pyplot as plt
 
-SELECTED_CSV = Path("point_summaries/selected_points.csv")
-OUT_DIR = Path("plots_by_config_kvp")
+SELECTED_CSV = Path("../point_summaries/selected_points.csv")
+OUT_DIR = Path("../plots_by_config_kvp")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 

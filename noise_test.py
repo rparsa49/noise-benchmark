@@ -3,9 +3,9 @@ import numpy as np
 import pydicom
 from pydicom.dataset import FileDataset
 from pydicom.uid import generate_uid, ExplicitVRLittleEndian
-from methods.saito import saito
+# from methods.saito import saito
 from methods.hunemohr import hunemohr
-from methods.tanaka import tanaka
+# from methods.tanaka import tanaka
 from methods.schneider import schneider
 from pathlib import Path
 import os
@@ -257,7 +257,7 @@ def test(series_clean, series_noisy_root, phantom_type, radii):
                     noisy_low_file = noisy_low_files[i]
                     noisy_high_file = noisy_high_files[i]
 
-                    for method_name, method_fn in [("saito", saito)]:
+                    for method_name, method_fn in [("hunemohr", hunemohr)]:
                         method_results = run_methods(
                             i,
                             clean_high_file,
@@ -279,9 +279,8 @@ def test(series_clean, series_noisy_root, phantom_type, radii):
 
     # Save output
     timestamp = datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-    out_path = Path(f"results/Saito-Head-8/saito_comparison_{radii}_{timestamp}.json")
+    out_path = Path(f"results/Hunemohr/Hunemohr-{phantom_type}-8/hunemohr_comparison_{radii}_{timestamp}.json")
 
-    # out_path = Path(f"results/Saito-{phantom_type}-{st}/saito_comparison_{radii}_{timestamp}.json")
     with open(out_path, "w") as f:
         json.dump(results, f, indent=2)
     print(f"\n✅ Results saved to {out_path}")
@@ -291,7 +290,7 @@ if __name__ == "__main__":
     process_upload("/Users/royaparsa/Desktop/Head-8/")
 
     series_clean = "/Users/royaparsa/Desktop/Head-8/"
-    series_noisy = "/Users/royaparsa/NYPC-DCT-BE/test_images/"
+    series_noisy = "/Users/royaparsa/Desktop/noise-benchmark/test_images"
 
     phantom_type = "Head"
     radii_ratio = [0.25, 0.5, 0.75, 1]
@@ -307,59 +306,5 @@ if __name__ == "__main__":
     # Now run the test harness
     for radi in radii_ratio:
         test(series_clean, series_noisy, phantom_type, radi)
-
-    # clean_series_body = [
-    #     "/Users/royaparsa/Desktop/Body-0.6/",
-    #     "/Users/royaparsa/Desktop/Body-1/",
-    #     "/Users/royaparsa/Desktop/Body-1.5/",
-    #     "/Users/royaparsa/Desktop/Body-2/",
-    #     "/Users/royaparsa/Desktop/Body-3/",
-    #     "/Users/royaparsa/Desktop/Body-4/",
-    #     "/Users/royaparsa/Desktop/Body-6/",
-    #     "/Users/royaparsa/Desktop/Body-8/"
-    # ]
-
-    # clean_series_head = [
-    #     "/Users/royaparsa/Desktop/Head-0.6/",
-    #     "/Users/royaparsa/Desktop/Head-1/",
-    #     "/Users/royaparsa/Desktop/Head-1.5/",
-    #     "/Users/royaparsa/Desktop/Head-2/",
-    #     "/Users/royaparsa/Desktop/Head-3/",
-    #     "/Users/royaparsa/Desktop/Head-4/",
-    #     "/Users/royaparsa/Desktop/Head-6/",
-    #     "/Users/royaparsa/Desktop/Head-8/",]
-
-    # # phantom_type = "Head"
-    # radii_ratio = [0.25, 0.5, 0.75, 1]
-    # sts = [0.6, 1, 1.5, 2, 3, 4, 6, 8]
     
-    # print("Running tests for body now...")
-    # for clean, st in zip(clean_series_body, sts):
-    #     process_upload(clean)
-        
-    #     print(f"Indexing CLEAN series at: {clean}")
-    #     clean_idx = index_series_by_kvp(clean)
-    #     print("CLEAN keys found:", list(clean_idx.keys()))
-    #     print()
-        
-    #     for radi in radii_ratio:
-    #         print(f"\n=== Running tests for CLEAN='{clean}' | radius={radi} | slice thickness={st} ===")
-    #         test(clean, series_noisy, "Body", radi, st)
-        
-    #     shutil.rmtree("test_images/")
-
-    # print("Running tests for head now...")
-    # for clean, st in zip(clean_series_head, sts):
-    #     process_upload(clean)
-
-    #     print(f"Indexing CLEAN series at: {clean}")
-    #     clean_idx = index_series_by_kvp(clean)
-    #     print("CLEAN keys found:", list(clean_idx.keys()))
-    #     print()
-
-    #     for radi in radii_ratio:
-    #         print(
-    #             f"\n=== Running tests for CLEAN='{clean}' | radius={radi} | slice thickness={st} ===")
-    #         test(clean, series_noisy, "Head", radi, st)
-        
-    #     shutil.rmtree("test_images/")
+    shutil.rmtree("test_images")

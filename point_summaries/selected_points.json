@@ -1334,6 +1334,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.1579020873005825,
+    "rmse_rel_z": 0.2691484022022659,
+    "selected_file": "results/Tanaka/Tanaka-Body-1/tanaka_comparison_0.75_2025_08_20-21_54_57.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.75,
@@ -1394,6 +1406,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.21587386158705424,
+    "rmse_rel_z": 0.22974521744702114,
+    "selected_file": "results/Tanaka/Tanaka-Body-1/tanaka_comparison_0.75_2025_08_20-21_54_57.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -1450,6 +1474,18 @@
     "rmse_rel_z": 0.20823978027230447,
     "selected_file": "results/Saito/Saito-Body-1/saito_comparison_0.75_2025_08_08-15_12_34.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.20777208902888464,
+    "rmse_rel_z": 0.3563741467771003,
+    "selected_file": "results/Tanaka/Tanaka-Body-1/tanaka_comparison_0.75_2025_08_20-21_54_57.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -2810,6 +2846,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.15399625713180592,
+    "rmse_rel_z": 0.22960645368985366,
+    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.5_2025_08_21-10_30_03.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.5,
@@ -2866,6 +2914,18 @@
     "rmse_rel_z": 0.2082397738220597,
     "selected_file": "results/Saito/Saito-Body-2/saito_comparison_0.5_2025_08_08-19_04_45.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.1350595548778652,
+    "rmse_rel_z": 0.2969732412750003,
+    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.5_2025_08_21-10_30_03.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -2930,6 +2990,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.18181105691803973,
+    "rmse_rel_z": 0.39080754549469415,
+    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.5_2025_08_21-10_30_03.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -2984,6 +3056,18 @@
     "pair_index": 8,
     "rmse_rel_rho": 0.01921555064148556,
     "rmse_rel_z": 0.20721451094656584,
+    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.1215527069828329,
+    "rmse_rel_z": 0.2501536733459329,
     "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
     "n_materials": 14
   },
@@ -3050,6 +3134,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.16116935604803942,
+    "rmse_rel_z": 0.24044955178340505,
+    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -3106,6 +3202,18 @@
     "rmse_rel_z": 0.20823978068677115,
     "selected_file": "results/Saito/Saito-Body-2/saito_comparison_0.75_2025_08_08-19_23_54.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.20376521017136634,
+    "rmse_rel_z": 0.27770735128001145,
+    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -3602,6 +3710,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.1270648426709934,
+    "rmse_rel_z": 0.22909636868243183,
+    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.5_2025_08_21-11_26_09.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.5,
@@ -3658,6 +3778,18 @@
     "rmse_rel_z": 0.20823977851345027,
     "selected_file": "results/Saito/Saito-Body-3/saito_comparison_0.5_2025_08_08-21_21_27.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.16989088731006785,
+    "rmse_rel_z": 0.2975245120437762,
+    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.5_2025_08_21-11_26_09.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -3722,6 +3854,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 3,
+    "rmse_rel_rho": 0.18000627739334973,
+    "rmse_rel_z": 0.43844922408698905,
+    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.5_2025_08_21-11_26_09.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -3776,6 +3920,18 @@
     "pair_index": 8,
     "rmse_rel_rho": 0.015147832026085184,
     "rmse_rel_z": 0.20178591816071353,
+    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.1277551737403131,
+    "rmse_rel_z": 0.2312558252410275,
     "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
     "n_materials": 14
   },
@@ -3842,6 +3998,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 1,
+    "rmse_rel_rho": 0.14390356284776368,
+    "rmse_rel_z": 0.22385405222887572,
+    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -3898,6 +4066,18 @@
     "rmse_rel_z": 0.2082397786465248,
     "selected_file": "results/Saito/Saito-Body-3/saito_comparison_0.75_2025_08_08-21_52_31.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.19311058324567829,
+    "rmse_rel_z": 0.27159363821427585,
+    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -4394,6 +4574,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.13887560438478108,
+    "rmse_rel_z": 0.24803452709847523,
+    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.5_2025_08_21-12_18_38.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "4",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.5,
@@ -4450,6 +4642,18 @@
     "rmse_rel_z": 0.20823977684431677,
     "selected_file": "results/Saito/Saito-Body-4/saito_comparison_0.5_2025_08_09-15_29_46.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.12849281346117802,
+    "rmse_rel_z": 0.3162751548014147,
+    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.5_2025_08_21-12_18_38.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -4514,6 +4718,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.24564809753177777,
+    "rmse_rel_z": 0.24015782148187909,
+    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.5_2025_08_21-12_18_38.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "4",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -4568,6 +4784,18 @@
     "pair_index": 8,
     "rmse_rel_rho": 0.01780956002922645,
     "rmse_rel_z": 0.194990445289257,
+    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.1337100647506676,
+    "rmse_rel_z": 0.23255883193911994,
     "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
     "n_materials": 14
   },
@@ -4634,6 +4862,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.15160202415172735,
+    "rmse_rel_z": 0.24518234678297982,
+    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "4",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -4690,6 +4930,18 @@
     "rmse_rel_z": 0.2082397743051995,
     "selected_file": "results/Saito/Saito-Body-4/saito_comparison_0.75_2025_08_09-15_47_01.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.1969726804230116,
+    "rmse_rel_z": 0.25801168802463026,
+    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -5474,6 +5726,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "8",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.1467821155857739,
+    "rmse_rel_z": 0.24463198497070376,
+    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.5_2025_08_21-13_33_08.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "8",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.5,
@@ -5530,6 +5794,18 @@
     "rmse_rel_z": 0.20823977921890446,
     "selected_file": "results/Saito/Saito-Body-8/saito_comparison_0.5_2025_08_09-19_10_50.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "8",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.15389047450512355,
+    "rmse_rel_z": 0.27275040314481475,
+    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.5_2025_08_21-13_33_08.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -5594,6 +5870,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "8",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.19598020695044782,
+    "rmse_rel_z": 0.4344675102306309,
+    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.5_2025_08_21-13_33_08.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "8",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -5648,6 +5936,18 @@
     "pair_index": 7,
     "rmse_rel_rho": 0.014863041328013245,
     "rmse_rel_z": 0.20266290037756776,
+    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "8",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.14204754790862625,
+    "rmse_rel_z": 0.22993434928694909,
     "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
     "n_materials": 14
   },
@@ -5714,6 +6014,18 @@
   {
     "phantom": "Body-Abdomen",
     "thickness": "8",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.13077466912425353,
+    "rmse_rel_z": 0.2611256887820017,
+    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
+    "n_materials": 14
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "8",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -5770,6 +6082,18 @@
     "rmse_rel_z": 0.20823977850520503,
     "selected_file": "results/Saito/Saito-Body-8/saito_comparison_0.75_2025_08_09-19_27_04.json",
     "n_materials": 9
+  },
+  {
+    "phantom": "Body-Abdomen",
+    "thickness": "8",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.19486847512152342,
+    "rmse_rel_z": 0.2852343740824004,
+    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
+    "n_materials": 14
   },
   {
     "phantom": "Body-Abdomen",
@@ -6266,6 +6590,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "0.6",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9262221063615161,
+    "rmse_rel_z": 0.26141205096867576,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-0.6/hunemohr_comparison_0.5_2025_09_03-12_18_49.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "0.6",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.5,
@@ -6321,6 +6657,18 @@
     "rmse_rel_rho": 0.06602321412483772,
     "rmse_rel_z": 0.22085905672624523,
     "selected_file": "results/Saito/Saito-Head-0.6/saito_comparison_0.5_2025_08_09-21_15_58.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "0.6",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 2,
+    "rmse_rel_rho": 0.9255387655275117,
+    "rmse_rel_z": 0.23143595813615014,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-0.6/hunemohr_comparison_0.5_2025_09_03-12_18_49.json",
     "n_materials": 8
   },
   {
@@ -6386,6 +6734,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "0.6",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.9178905703077492,
+    "rmse_rel_z": 0.23899026547810678,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-0.6/hunemohr_comparison_0.5_2025_09_03-12_18_49.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "0.6",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -6441,6 +6801,18 @@
     "rmse_rel_rho": 0.03916099389545142,
     "rmse_rel_z": 0.22085905483613444,
     "selected_file": "results/Saito/Saito-Head-0.6/saito_comparison_0.75_2025_08_09-21_32_10.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "0.6",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 2,
+    "rmse_rel_rho": 0.9285433732528536,
+    "rmse_rel_z": 0.24523542831797485,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-0.6/hunemohr_comparison_0.75_2025_09_03-12_18_50.json",
     "n_materials": 8
   },
   {
@@ -6506,6 +6878,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "0.6",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.9232043061452313,
+    "rmse_rel_z": 0.26264401717362257,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-0.6/hunemohr_comparison_0.75_2025_09_03-12_18_50.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "0.6",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -6561,6 +6945,18 @@
     "rmse_rel_rho": 0.06709580808606432,
     "rmse_rel_z": 0.2208590535565354,
     "selected_file": "results/Saito/Saito-Head-0.6/saito_comparison_0.75_2025_08_09-21_32_10.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "0.6",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9113408800869528,
+    "rmse_rel_z": 0.28004604670903155,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-0.6/hunemohr_comparison_0.75_2025_09_03-12_18_50.json",
     "n_materials": 8
   },
   {
@@ -6842,6 +7238,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.25,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.9314403104553343,
+    "rmse_rel_z": 0.23303555851790542,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.25_2025_09_03-12_19_12.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.25,
@@ -6897,6 +7305,18 @@
     "rmse_rel_rho": 0.0885172898579489,
     "rmse_rel_z": 0.22085905733419814,
     "selected_file": "results/Saito/Saito-Head-1/saito_comparison_0.25_2025_08_12-14_07_21.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.25,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.9215462172098253,
+    "rmse_rel_z": 0.2196236005813913,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.25_2025_09_03-12_19_12.json",
     "n_materials": 8
   },
   {
@@ -6962,6 +7382,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.25,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.9209436558634639,
+    "rmse_rel_z": 0.21956028394478372,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.25_2025_09_03-12_19_12.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.25,
@@ -7017,6 +7449,18 @@
     "rmse_rel_rho": 0.01916272972050538,
     "rmse_rel_z": 0.22085905584402774,
     "selected_file": "results/Saito/Saito-Head-1/saito_comparison_0.5_2025_08_12-14_22_25.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.9294431709589457,
+    "rmse_rel_z": 0.2584911691125934,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.5_2025_09_03-12_19_13.json",
     "n_materials": 8
   },
   {
@@ -7082,6 +7526,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9249779095415875,
+    "rmse_rel_z": 0.23736261717316479,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.5_2025_09_03-12_19_13.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.5,
@@ -7137,6 +7593,18 @@
     "rmse_rel_rho": 0.08378235170647992,
     "rmse_rel_z": 0.22085905600756175,
     "selected_file": "results/Saito/Saito-Head-1/saito_comparison_0.5_2025_08_12-14_22_25.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.920782744242627,
+    "rmse_rel_z": 0.23401402334752247,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.5_2025_09_03-12_19_13.json",
     "n_materials": 8
   },
   {
@@ -7202,6 +7670,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.9250483476705433,
+    "rmse_rel_z": 0.2851598735619856,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.75_2025_09_03-12_19_14.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.75,
@@ -7262,6 +7742,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.9217817147952669,
+    "rmse_rel_z": 0.24394392839993978,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.75_2025_09_03-12_19_14.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -7317,6 +7809,18 @@
     "rmse_rel_rho": 0.05259334008541959,
     "rmse_rel_z": 0.22085905335408018,
     "selected_file": "results/Saito/Saito-Head-1/saito_comparison_0.75_2025_08_12-14_38_48.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.9164064145618606,
+    "rmse_rel_z": 0.2360867605743044,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1/hunemohr_comparison_0.75_2025_09_03-12_19_14.json",
     "n_materials": 8
   },
   {
@@ -7598,6 +8102,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.25,
+    "pair_index": 1,
+    "rmse_rel_rho": 0.9312741018224612,
+    "rmse_rel_z": 0.2328915516657163,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.25_2025_09_03-12_19_25.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.25,
@@ -7653,6 +8169,18 @@
     "rmse_rel_rho": 0.09935609236529527,
     "rmse_rel_z": 0.22085906169379635,
     "selected_file": "results/Saito/Saito-Head-1.5/saito_comparison_0.25_2025_08_12-15_18_37.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.25,
+    "pair_index": 1,
+    "rmse_rel_rho": 0.9238975086127692,
+    "rmse_rel_z": 0.20581175809446386,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.25_2025_09_03-12_19_25.json",
     "n_materials": 8
   },
   {
@@ -7718,6 +8246,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.25,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.9032412017797486,
+    "rmse_rel_z": 0.2273225211156003,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.25_2025_09_03-12_19_25.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.25,
@@ -7773,6 +8313,18 @@
     "rmse_rel_rho": 0.028760330063355783,
     "rmse_rel_z": 0.220859054980552,
     "selected_file": "results/Saito/Saito-Head-1.5/saito_comparison_0.5_2025_08_12-15_33_49.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.9295387177682476,
+    "rmse_rel_z": 0.26705739985057436,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.5_2025_09_03-12_19_26.json",
     "n_materials": 8
   },
   {
@@ -7838,6 +8390,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 2,
+    "rmse_rel_rho": 0.924964982756048,
+    "rmse_rel_z": 0.23392336681791084,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.5_2025_09_03-12_19_26.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.5,
@@ -7893,6 +8457,18 @@
     "rmse_rel_rho": 0.07415548427669537,
     "rmse_rel_z": 0.22085905364394479,
     "selected_file": "results/Saito/Saito-Head-1.5/saito_comparison_0.5_2025_08_12-15_33_49.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.9189463598223686,
+    "rmse_rel_z": 0.24065448884242183,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.5_2025_09_03-12_19_26.json",
     "n_materials": 8
   },
   {
@@ -7958,6 +8534,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.9264136638084525,
+    "rmse_rel_z": 0.28040591838560813,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.75_2025_09_03-12_19_27.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.75,
@@ -8018,6 +8606,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9241399975984498,
+    "rmse_rel_z": 0.2664827064732772,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.75_2025_09_03-12_19_27.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -8073,6 +8673,18 @@
     "rmse_rel_rho": 0.06760304190469775,
     "rmse_rel_z": 0.22085904855672242,
     "selected_file": "results/Saito/Saito-Head-1.5/saito_comparison_0.75_2025_08_12-15_50_15.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "1.5",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.9150511532477529,
+    "rmse_rel_z": 0.23919201307227728,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-1.5/hunemohr_comparison_0.75_2025_09_03-12_19_27.json",
     "n_materials": 8
   },
   {
@@ -8354,6 +8966,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.25,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9311146872182308,
+    "rmse_rel_z": 0.231042156197755,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.25_2025_09_03-12_19_43.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.25,
@@ -8409,6 +9033,18 @@
     "rmse_rel_rho": 0.11344984558565764,
     "rmse_rel_z": 0.22085906394598517,
     "selected_file": "results/Saito/Saito-Head-2/saito_comparison_0.25_2025_08_12-17_35_33.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.25,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9183450402762464,
+    "rmse_rel_z": 0.22443823756618442,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.25_2025_09_03-12_19_43.json",
     "n_materials": 8
   },
   {
@@ -8474,6 +9110,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.25,
+    "pair_index": 1,
+    "rmse_rel_rho": 0.9205758361954322,
+    "rmse_rel_z": 0.22740462384473173,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.25_2025_09_03-12_19_43.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.25,
@@ -8529,6 +9177,18 @@
     "rmse_rel_rho": 0.011989768561824184,
     "rmse_rel_z": 0.2208590555645229,
     "selected_file": "results/Saito/Saito-Head-2/saito_comparison_0.5_2025_08_12-17_51_25.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.9305667521312516,
+    "rmse_rel_z": 0.2395042723433303,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.5_2025_09_03-12_19_44.json",
     "n_materials": 8
   },
   {
@@ -8594,6 +9254,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9237038484426843,
+    "rmse_rel_z": 0.22993150854428346,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.5_2025_09_03-12_19_44.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.5,
@@ -8654,6 +9326,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "2",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.9216204434467562,
+    "rmse_rel_z": 0.22674588999135536,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.5_2025_09_03-12_19_44.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -8673,6 +9357,18 @@
     "rmse_rel_rho": 0.06016904889435359,
     "rmse_rel_z": 0.220859061788405,
     "selected_file": "results/Saito/Saito-Head-2/saito_comparison_0.5_2025_08_12-17_51_25.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "70-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.9298664248568624,
+    "rmse_rel_z": 0.29403712322222825,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.75_2025_09_03-12_19_45.json",
     "n_materials": 8
   },
   {
@@ -8738,6 +9434,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "2",
+    "kvp_pair": "70-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.9235712945984373,
+    "rmse_rel_z": 0.2511109308200666,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.75_2025_09_03-12_19_45.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
     "kvp_pair": "70-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -8793,6 +9501,18 @@
     "rmse_rel_rho": 0.043686232830022494,
     "rmse_rel_z": 0.22085905474010029,
     "selected_file": "results/Saito/Saito-Head-2/saito_comparison_0.75_2025_08_12-18_07_09.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "2",
+    "kvp_pair": "70-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 2,
+    "rmse_rel_rho": 0.919362790743946,
+    "rmse_rel_z": 0.26509865959331824,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-2/hunemohr_comparison_0.75_2025_09_03-12_19_45.json",
     "n_materials": 8
   },
   {
@@ -9110,6 +9830,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.25,
+    "pair_index": 3,
+    "rmse_rel_rho": 0.9287769113976673,
+    "rmse_rel_z": 0.23864789034431974,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.25_2025_09_03-12_20_26.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.25,
@@ -9165,6 +9897,18 @@
     "rmse_rel_rho": 0.05262953546253257,
     "rmse_rel_z": 0.22085905308880005,
     "selected_file": "results/Saito/Saito-Head-3/saito_comparison_0.25_2025_08_12-18_44_13.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.25,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.9185204241139643,
+    "rmse_rel_z": 0.22786369213307225,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.25_2025_09_03-12_20_26.json",
     "n_materials": 8
   },
   {
@@ -9230,6 +9974,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.25,
+    "pair_index": 7,
+    "rmse_rel_rho": 0.9244774478848632,
+    "rmse_rel_z": 0.19862966300850146,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.25_2025_09_03-12_20_26.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.25,
@@ -9285,6 +10041,18 @@
     "rmse_rel_rho": 0.01584803181919508,
     "rmse_rel_z": 0.22085905123761693,
     "selected_file": "results/Saito/Saito-Head-3/saito_comparison_0.5_2025_08_12-19_00_18.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 0,
+    "rmse_rel_rho": 0.9292437756792771,
+    "rmse_rel_z": 0.2394132777640143,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.5_2025_09_03-12_20_27.json",
     "n_materials": 8
   },
   {
@@ -9350,6 +10118,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 2,
+    "rmse_rel_rho": 0.9269237878737532,
+    "rmse_rel_z": 0.2288972874647308,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.5_2025_09_03-12_20_27.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.5,
@@ -9405,6 +10185,18 @@
     "rmse_rel_rho": 0.05477305735637863,
     "rmse_rel_z": 0.22085905464372665,
     "selected_file": "results/Saito/Saito-Head-3/saito_comparison_0.5_2025_08_12-19_00_18.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 9,
+    "rmse_rel_rho": 0.9199036801673259,
+    "rmse_rel_z": 0.22085356478735305,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.5_2025_09_03-12_20_27.json",
     "n_materials": 8
   },
   {
@@ -9470,6 +10262,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.9262788247273183,
+    "rmse_rel_z": 0.2755623952868646,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.75_2025_09_03-12_20_28.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.75,
@@ -9530,6 +10334,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 2,
+    "rmse_rel_rho": 0.9232674746888881,
+    "rmse_rel_z": 0.2709493663072846,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.75_2025_09_03-12_20_28.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
     "kvp_pair": "80-120",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -9585,6 +10401,18 @@
     "rmse_rel_rho": 0.031893195833904105,
     "rmse_rel_z": 0.22085905083557875,
     "selected_file": "results/Saito/Saito-Head-3/saito_comparison_0.75_2025_08_12-19_53_45.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "3",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.9189539958202948,
+    "rmse_rel_z": 0.2356256694075355,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-3/hunemohr_comparison_0.75_2025_09_03-12_20_28.json",
     "n_materials": 8
   },
   {
@@ -10082,6 +10910,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.01",
+    "radius": 0.5,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.9273858135832597,
+    "rmse_rel_z": 0.24505800428229807,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.5_2025_09_03-12_20_42.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
     "kvp_pair": "80-120",
     "noise_level": "0.01",
     "radius": 0.5,
@@ -10137,6 +10977,18 @@
     "rmse_rel_rho": 0.028755339317360913,
     "rmse_rel_z": 0.2208590514507237,
     "selected_file": "results/Saito/Saito-Head-4/saito_comparison_0.5_2025_08_12-21_23_40.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.05",
+    "radius": 0.5,
+    "pair_index": 8,
+    "rmse_rel_rho": 0.9246162917444898,
+    "rmse_rel_z": 0.22507013417501695,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.5_2025_09_03-12_20_42.json",
     "n_materials": 8
   },
   {
@@ -10202,6 +11054,18 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "4",
+    "kvp_pair": "80-100",
+    "noise_level": "0.1",
+    "radius": 0.5,
+    "pair_index": 3,
+    "rmse_rel_rho": 0.9190738553907813,
+    "rmse_rel_z": 0.22759906735555482,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.5_2025_09_03-12_20_42.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
     "kvp_pair": "80-120",
     "noise_level": "0.1",
     "radius": 0.5,
@@ -10221,6 +11085,30 @@
     "rmse_rel_rho": 0.07908202796706644,
     "rmse_rel_z": 0.2208590552069848,
     "selected_file": "results/Saito/Saito-Head-4/saito_comparison_0.5_2025_08_12-21_23_40.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "70-100",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 5,
+    "rmse_rel_rho": 0.9255621723600731,
+    "rmse_rel_z": 0.29102684170195053,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.75_2025_09_03-12_20_43.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "70-120",
+    "noise_level": "0.01",
+    "radius": 0.75,
+    "pair_index": 1,
+    "rmse_rel_rho": 0.9202372730320979,
+    "rmse_rel_z": 0.2998857630221732,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.75_2025_09_03-12_20_43.json",
     "n_materials": 8
   },
   {
@@ -10274,6 +11162,30 @@
   {
     "phantom": "Head-Abdomen",
     "thickness": "4",
+    "kvp_pair": "70-100",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.9217562020619668,
+    "rmse_rel_z": 0.30716759997798515,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.75_2025_09_03-12_20_43.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "70-120",
+    "noise_level": "0.05",
+    "radius": 0.75,
+    "pair_index": 6,
+    "rmse_rel_rho": 0.9153982026457829,
+    "rmse_rel_z": 0.31095780566209086,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.75_2025_09_03-12_20_43.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
     "kvp_pair": "70-140",
     "noise_level": "0.05",
     "radius": 0.75,
@@ -10317,6 +11229,30 @@
     "rmse_rel_rho": 0.04526820845528147,
     "rmse_rel_z": 0.22085905747341567,
     "selected_file": "results/Saito/Saito-Head-4/saito_comparison_0.75_2025_08_12-21_36_13.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "70-100",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 3,
+    "rmse_rel_rho": 0.9170965087551962,
+    "rmse_rel_z": 0.3065624160225517,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.75_2025_09_03-12_20_43.json",
+    "n_materials": 8
+  },
+  {
+    "phantom": "Head-Abdomen",
+    "thickness": "4",
+    "kvp_pair": "70-120",
+    "noise_level": "0.1",
+    "radius": 0.75,
+    "pair_index": 4,
+    "rmse_rel_rho": 0.9122388796723492,
+    "rmse_rel_z": 0.3302489381303378,
+    "selected_file": "results/Hunemohr/Hunemohr-Head-4/hunemohr_comparison_0.75_2025_09_03-12_20_43.json",
     "n_materials": 8
   },
   {
@@ -12310,329 +13246,5 @@
     "rmse_rel_z": 0.22085906174163217,
     "selected_file": "results/Saito/Saito-Head-8/saito_comparison_1_2025_08_13-13_21_09.json",
     "n_materials": 8
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "1",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.75,
-    "pair_index": 9,
-    "rmse_rel_rho": 0.1579020873005825,
-    "rmse_rel_z": 0.2691484022022659,
-    "selected_file": "results/Tanaka/Tanaka-Body-1/tanaka_comparison_0.75_2025_08_20-21_54_57.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "1",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.75,
-    "pair_index": 7,
-    "rmse_rel_rho": 0.21587386158705424,
-    "rmse_rel_z": 0.22974521744702114,
-    "selected_file": "results/Tanaka/Tanaka-Body-1/tanaka_comparison_0.75_2025_08_20-21_54_57.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "1",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.75,
-    "pair_index": 9,
-    "rmse_rel_rho": 0.20777208902888464,
-    "rmse_rel_z": 0.3563741467771003,
-    "selected_file": "results/Tanaka/Tanaka-Body-1/tanaka_comparison_0.75_2025_08_20-21_54_57.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "2",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.5,
-    "pair_index": 0,
-    "rmse_rel_rho": 0.15399625713180592,
-    "rmse_rel_z": 0.22960645368985366,
-    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.5_2025_08_21-10_30_03.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "2",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.5,
-    "pair_index": 0,
-    "rmse_rel_rho": 0.1350595548778652,
-    "rmse_rel_z": 0.2969732412750003,
-    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.5_2025_08_21-10_30_03.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "2",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.5,
-    "pair_index": 6,
-    "rmse_rel_rho": 0.18181105691803973,
-    "rmse_rel_z": 0.39080754549469415,
-    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.5_2025_08_21-10_30_03.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "2",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.75,
-    "pair_index": 4,
-    "rmse_rel_rho": 0.1215527069828329,
-    "rmse_rel_z": 0.2501536733459329,
-    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "2",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.75,
-    "pair_index": 7,
-    "rmse_rel_rho": 0.16116935604803942,
-    "rmse_rel_z": 0.24044955178340505,
-    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "2",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.75,
-    "pair_index": 9,
-    "rmse_rel_rho": 0.20376521017136634,
-    "rmse_rel_z": 0.27770735128001145,
-    "selected_file": "results/Tanaka/Tanaka-Body-2/tanaka_comparison_0.75_2025_08_21-10_43_08.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "3",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.5,
-    "pair_index": 9,
-    "rmse_rel_rho": 0.1270648426709934,
-    "rmse_rel_z": 0.22909636868243183,
-    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.5_2025_08_21-11_26_09.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "3",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.5,
-    "pair_index": 8,
-    "rmse_rel_rho": 0.16989088731006785,
-    "rmse_rel_z": 0.2975245120437762,
-    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.5_2025_08_21-11_26_09.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "3",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.5,
-    "pair_index": 3,
-    "rmse_rel_rho": 0.18000627739334973,
-    "rmse_rel_z": 0.43844922408698905,
-    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.5_2025_08_21-11_26_09.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "3",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.75,
-    "pair_index": 6,
-    "rmse_rel_rho": 0.1277551737403131,
-    "rmse_rel_z": 0.2312558252410275,
-    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "3",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.75,
-    "pair_index": 1,
-    "rmse_rel_rho": 0.14390356284776368,
-    "rmse_rel_z": 0.22385405222887572,
-    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "3",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.75,
-    "pair_index": 8,
-    "rmse_rel_rho": 0.19311058324567829,
-    "rmse_rel_z": 0.27159363821427585,
-    "selected_file": "results/Tanaka/Tanaka-Body-3/tanaka_comparison_0.75_2025_08_21-11_39_19.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "4",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.5,
-    "pair_index": 9,
-    "rmse_rel_rho": 0.13887560438478108,
-    "rmse_rel_z": 0.24803452709847523,
-    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.5_2025_08_21-12_18_38.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "4",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.5,
-    "pair_index": 5,
-    "rmse_rel_rho": 0.12849281346117802,
-    "rmse_rel_z": 0.3162751548014147,
-    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.5_2025_08_21-12_18_38.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "4",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.5,
-    "pair_index": 9,
-    "rmse_rel_rho": 0.24564809753177777,
-    "rmse_rel_z": 0.24015782148187909,
-    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.5_2025_08_21-12_18_38.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "4",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.75,
-    "pair_index": 4,
-    "rmse_rel_rho": 0.1337100647506676,
-    "rmse_rel_z": 0.23255883193911994,
-    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "4",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.75,
-    "pair_index": 5,
-    "rmse_rel_rho": 0.15160202415172735,
-    "rmse_rel_z": 0.24518234678297982,
-    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "4",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.75,
-    "pair_index": 6,
-    "rmse_rel_rho": 0.1969726804230116,
-    "rmse_rel_z": 0.25801168802463026,
-    "selected_file": "results/Tanaka/Tanaka-Body-4/tanaka_comparison_0.75_2025_08_21-12_31_44.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "8",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.5,
-    "pair_index": 5,
-    "rmse_rel_rho": 0.1467821155857739,
-    "rmse_rel_z": 0.24463198497070376,
-    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.5_2025_08_21-13_33_08.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "8",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.5,
-    "pair_index": 4,
-    "rmse_rel_rho": 0.15389047450512355,
-    "rmse_rel_z": 0.27275040314481475,
-    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.5_2025_08_21-13_33_08.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "8",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.5,
-    "pair_index": 8,
-    "rmse_rel_rho": 0.19598020695044782,
-    "rmse_rel_z": 0.4344675102306309,
-    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.5_2025_08_21-13_33_08.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "8",
-    "kvp_pair": "80-100",
-    "noise_level": "0.01",
-    "radius": 0.75,
-    "pair_index": 7,
-    "rmse_rel_rho": 0.14204754790862625,
-    "rmse_rel_z": 0.22993434928694909,
-    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "8",
-    "kvp_pair": "80-100",
-    "noise_level": "0.05",
-    "radius": 0.75,
-    "pair_index": 4,
-    "rmse_rel_rho": 0.13077466912425353,
-    "rmse_rel_z": 0.2611256887820017,
-    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
-    "n_materials": 14
-  },
-  {
-    "phantom": "Body-Abdomen",
-    "thickness": "8",
-    "kvp_pair": "80-100",
-    "noise_level": "0.1",
-    "radius": 0.75,
-    "pair_index": 5,
-    "rmse_rel_rho": 0.19486847512152342,
-    "rmse_rel_z": 0.2852343740824004,
-    "selected_file": "results/Tanaka/Tanaka-Body-8/tanaka_comparison_0.75_2025_08_21-13_46_20.json",
-    "n_materials": 14
   }
 ]

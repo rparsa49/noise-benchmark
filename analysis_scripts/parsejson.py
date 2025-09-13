@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # ---- Load Data ----
-json_path = Path("method_comparison_20250801-165359.json")
+json_path = Path("../method_comparison_20250801-165359.json")
 with open(json_path, "r") as f:
     data = json.load(f)
 
