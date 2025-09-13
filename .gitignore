@@ -7,3 +7,7 @@ test_images/
 plots/
 validation/
 .DS_Store
+plots_by_config_kvp/
+plots_by_config/
+plots/
+heatmaps/
