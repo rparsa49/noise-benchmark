@@ -1,67 +1,93 @@
 {
     "LN-350": {
-        "electron density": 2.119259303231076,
-        "atomic number": 8.5982,
-        "spr": -4.6854611721088036e-48
+        "density": 0.29,
+        "atomic_number": 8.5982,
+        "I_eV": 85.982,
+        "beta": 0.017272930282619645,
+        "spr": 0.29091861303491184
     },
     "LN-450": {
-        "electron density": 2.8567534416402065,
-        "atomic number": 7.46,
-        "spr": -6.294636118261358e-48
+        "density": 0.45,
+        "atomic_number": 7.46,
+        "I_eV": 74.6,
+        "beta": 0.017272930282619645,
+        "spr": 0.4498996439020398
     },
     "Adipose": {
-        "electron density": 5.975894361241057,
-        "atomic number": 6.17,
-        "spr": -1.310771586590379e-47
+        "density": 0.96,
+        "atomic_number": 6.17,
+        "I_eV": 61.7,
+        "beta": 0.017272930282619645,
+        "spr": 0.9554338099425727
     },
     "Breast": {
-        "electron density": 6.6186543412042855,
-        "atomic number": 6.81,
-        "spr": -1.455194182507241e-47
+        "density": 0.98,
+        "atomic_number": 6.81,
+        "I_eV": 68.1,
+        "beta": 0.017272930282619645,
+        "spr": 0.9776481671297473
     },
     "True Water": {
-        "electron density": 7.47121833505515,
-        "atomic number": 7.45,
-        "spr": -1.6461726602480653e-47
+        "density": 1.0,
+        "atomic_number": 7.45,
+        "I_eV": 74.5,
+        "beta": 0.017272930282619645,
+        "spr": 0.9997449566575521
     },
     "Solid Water": {
-        "electron density": 41.69276354579951,
-        "atomic number": 7.5,
-        "spr": -9.187852557529056e-47
+        "density": 1.02,
+        "atomic_number": 7.5,
+        "I_eV": 75.0,
+        "beta": 0.017272930282619645,
+        "spr": 1.0199027712479418
     },
     "Brain": {
-        "electron density": 5.7994566090386055,
-        "atomic number": 6.05,
-        "spr": -1.2714717425189436e-47
+        "density": 1.05,
+        "atomic_number": 6.05,
+        "I_eV": 60.5,
+        "beta": 0.017272930282619645,
+        "spr": 1.0445132990743882
     },
     "Liver": {
-        "electron density": 7.471480650394572,
-        "atomic number": 7.55,
-        "spr": -1.6467547194331904e-47
+        "density": 1.08,
+        "atomic_number": 7.55,
+        "I_eV": 75.5,
+        "beta": 0.017272930282619645,
+        "spr": 1.0800684044496593
     },
     "Inner Bone": {
-        "electron density": 9.520092294775502,
-        "atomic number": 10.14,
-        "spr": -2.113056309849078e-47
+        "density": 1.21,
+        "atomic_number": 10.14,
+        "I_eV": 101.4,
+        "beta": 0.017272930282619645,
+        "spr": 1.2185982429319882
     },
     "30% CaCO3": {
-        "electron density": 11.18459062462956,
-        "atomic number": 10.61,
-        "spr": -2.48517113419849e-47
+        "density": 1.333,
+        "atomic_number": 10.61,
+        "I_eV": 106.1,
+        "beta": 0.017272930282619645,
+        "spr": 1.3439144472914668
     },
     "50% CaCO3": {
-        "electron density": 12.446747912437393,
-        "atomic number": 12.26,
-        "spr": -2.7750853527119494e-47
+        "density": 1.56,
+        "atomic_number": 12.26,
+        "I_eV": 122.6,
+        "beta": 0.017272930282619645,
+        "spr": 1.5781573972114182
     },
     "Cortical Bone": {
-        "electron density": 13.337587369166766,
-        "atomic number": 13.38,
-        "spr": -2.9798398699239364e-47
+        "density": 1.823,
+        "atomic_number": 13.38,
+        "I_eV": 133.8,
+        "beta": 0.017272930282619645,
+        "spr": 1.8480238999530456
     },
     "Air": {
-        "electron density": 0.0,
-        "atomic number": 7.5,
-        "spr": -0.0
+        "density": 0,
+        "atomic_number": 7.5,
+        "I_eV": 75.0,
+        "beta": 0.017272930282619645,
+        "spr": 0.0
     }
 }
