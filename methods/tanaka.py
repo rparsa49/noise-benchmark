@@ -256,6 +256,165 @@ def optimize_gamma(zeff_list, ct_list, rho_list):
     result = minimize_scalar(objective, bounds=(0, 10), method="bounded")
     return result.x
 
+
+def tanaka_test(high_path, low_path, phantom_type, radii_ratios, alpha, a, b, gamma, c0, c1):
+    dicom_data_h = pydicom.dcmread(high_path)
+    dicom_data_l = pydicom.dcmread(low_path)
+
+    high_image = dicom_data_h.pixel_array
+    low_image = dicom_data_l.pixel_array
+
+    # Process head phantom
+    saved_circles = CIRCLE_DATA[phantom_type]
+    materials_list = []
+
+    calculated_rhos = []
+    calculated_z_effs = []
+    true_z_ratios, calculated_z_ratios = [], []
+    optimized_zs = []
+    true_mean_excitation, calculated_mean_excitation = [], []
+    sprs = []
+    t_sprs = []
+
+    reduced_cts = []
+
+    HU_H_List, HU_L_List, delta_HU_list = [], [], []
+
+    for circle in saved_circles:
+        x, y, radius, material = circle["x"], circle["y"], circle["radius"], circle["material"]
+
+        if material not in TRUE_RHO or material == '50% CaCO3' or material == '30% CaCO3':
+            # print(f"Warning: Material '{material}' not found in TRUE_RHO.")
+            continue
+
+        materials_list.append(material)
+
+        # Mask for circular region
+        mask = np.zeros(high_image.shape, dtype=np.uint8)
+        cv2.circle(mask, (x, y), int(radius * radii_ratios), 1, thickness=-1)
+
+        high_pixel_values = high_image[mask == 1]
+        low_pixel_values = low_image[mask == 1]
+
+        mean_high_hu = np.mean(high_pixel_values) * \
+            dicom_data_h.RescaleSlope + dicom_data_h.RescaleIntercept
+        mean_low_hu = np.mean(low_pixel_values) * \
+            dicom_data_l.RescaleSlope + dicom_data_l.RescaleIntercept
+
+        # Create HU lists
+        HU_H_List.append(mean_high_hu)
+        HU_L_List.append(mean_low_hu)
+
+    # Step 1: Get optimized alpha
+    # print(f"Alpha: {alpha}\n a: {a}\n b: {b}\n r: {r}\n")
+
+    deltas = []
+    for HU_H, HU_L in zip(HU_H_List, HU_L_List):
+        delta = ((1 + alpha) * HU_H) - (alpha * HU_L)
+        deltas.append(delta)
+
+    # Step 2: Calculate rho
+    for delta in deltas:
+        rho = rho_e_calc(delta, a, b)
+        calculated_rhos.append(rho)
+
+    # for mat, rho in zip(materials_list, calculated_rhos):
+    #     print(f"Material: {mat} with electron density of {rho}")
+
+    # Step 3: Calculate reduced CT
+    reduced_ct = [reduce_ct(hl) for hl in HU_L_List]
+
+    # Step 4: Optimize Gamma using true Z_Eff and estimated rho
+    zeff_list = [TRUE_ZEFF[mat] for mat in materials_list]
+    # print(f"Gamma is: {gamma}")
+
+    # Step 5: Calculate estimated Z ratios
+    calculated_z_ratios = [(zeff_rhs(gamma, ct, rho))
+                           for ct, rho in zip(reduced_ct, calculated_rhos)]
+
+    # Convert ratios to Z_eff
+    calculated_z_effs = [(zeff_rhs(gamma, ct, rho) + 1) ** (1/3.3)
+                         * 7.45 for ct, rho in zip(reduced_ct, calculated_rhos)]
+
+    # Calculate optimized Z_eff
+    # Step 4: Calculate optimized zeff
+    zeff_w = calculate_z_eff_hunemohr("True Water")
+    # zeff_w = 7
+    d_e = fit_zeff(calculated_rhos, zeff_w,
+                   calculated_z_effs, HU_H_List, HU_L_List)
+    for rhos, x1, x2 in zip(calculated_rhos, HU_H_List, HU_L_List):
+        opt_z = calculate_zeff_optimized(rhos, zeff_w, x1,  x2, d_e)
+        optimized_zs.append(opt_z)
+
+    # Step 5: Calculate True Mean Excitation Energy
+    for mat in materials_list:
+        comp = MATERIAL_PROPERTIES[mat]["composition"]
+        elements = list(comp.keys())
+        fraction = np.array([comp[e] for e in elements])
+
+        atomic_numbers = np.array(
+            [ELEMENTAL_PROPERTIES[e]["number"] for e in elements])
+        atomic_masses = np.array(
+            [ELEMENTAL_PROPERTIES[e]["mass"] for e in elements])
+        ionization_energies = np.array(
+            [ELEMENTAL_PROPERTIES[e]["ionization"] for e in elements])
+
+        i = i_truth(fraction, atomic_numbers,
+                    atomic_masses, ionization_energies)
+        true_mean_excitation.append(i)
+
+    # print(f"True I: {true_mean_excitation}")
+    # print(f"Calculated Zs: {calculated_z_ratios}")
+
+    # Step 6: Optimize c0 and c1 for mean excitation energy using Tanaka 2020 eq. 6
+    # print(f"C0: {c0} \nC1: {c1}")
+
+    for z_ratio in calculated_z_ratios:
+        i_tanaka_val = i_tanaka(z_ratio, c0, c1)
+        calculated_mean_excitation.append(i_tanaka_val)
+
+    # print(f"Tanaka I: {calculated_mean_excitation}")
+    # Step 7: Calculate stopping power
+    for t, rho, mat in zip(calculated_mean_excitation, calculated_rhos, materials_list):
+        I = get_I(t)
+        beta2 = beta(200)
+        spr = spr_tanaka(rho, I, beta2)
+        sprs.append(spr)
+
+        tanaka_spr = get_t_spr(mat)
+        t_sprs.append(tanaka_spr)
+
+    ground_rho = []
+    for mat in materials_list:
+        ground_rho.append(MATERIAL_PROPERTIES[mat]["rho_e_w"])
+    rmse_rho = mean_squared_error(ground_rho, calculated_rhos)
+    r2_rho = r2_score(ground_rho, calculated_rhos)
+    print(f"RMSE for rho: {rmse_rho} with R2 of {r2_rho}")
+
+    ground_z = []
+    for mat in materials_list:
+        ground_z.append(MATERIAL_PROPERTIES[mat]["Z_eff"])
+    rmse_z = mean_squared_error(ground_z, optimized_zs)
+    r2_z = r2_score(ground_z, optimized_zs)
+    print(f"RMSE for Z: {rmse_z} with R2 of {r2_z}")
+
+    # Return JSON
+    results = {
+        "materials": materials_list,
+        "calculated_rhos": calculated_rhos,
+        "calculated_z_effs": optimized_zs,
+        "mean_excitations": calculated_mean_excitation,
+        "stopping_power": sprs,
+        "tanaka_stopping_power": t_sprs,
+        "error_metrics": {
+            "rho": {"RMSE": rmse_rho, "R2": r2_rho},
+            "z": {"RMSE": rmse_z, "R2": r2_z}
+        }
+    }
+
+    return json.dumps(results, indent=4)
+
+
 def tanaka(high_path, low_path, phantom_type, radii_ratios):
     dicom_data_h = pydicom.dcmread(high_path)
     dicom_data_l = pydicom.dcmread(low_path)
