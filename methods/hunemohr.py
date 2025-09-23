@@ -147,6 +147,120 @@ def calculate_zeff_optimized(rho_e, zeff_w, x1, x2, d_e, n=3.1):
     inner = factor * (term1 + term2)
     return inner ** (1/n)
 
+def hunemohr_test(high_path, low_path, phantom_type, radii_ratios, a, b, c):
+    dicom_data_h = pydicom.dcmread(high_path)
+    dicom_data_l = pydicom.dcmread(low_path)
+
+    high_image = dicom_data_h.pixel_array
+    low_image = dicom_data_l.pixel_array
+
+    HU_H_List, HU_L_List, materials_list = [], [], []
+    calculated_rhos, calculated_zeffs = [], []
+    reference_I, calculated_I = [], []
+    optimized_zs = []
+    sprs = []
+    SAVED_CIRCLES = CIRCLE_DATA[phantom_type]
+
+    for circle in SAVED_CIRCLES:
+        x, y, radius, material = circle["x"], circle["y"], circle["radius"], circle["material"]
+        if material not in TRUE_RHO or material in materials_list:
+            print(f"Warning: Material '{material}' not found in TRUE_RHO.")
+            continue
+
+        materials_list.append(material)
+
+        # Mask for circular region
+        mask = np.zeros(high_image.shape, dtype=np.uint8)
+        cv2.circle(mask, (x, y), int(radius * radii_ratios), 1, thickness=-1)
+
+        high_pixel_values = high_image[mask == 1]
+        low_pixel_values = low_image[mask == 1]
+
+        mean_high_hu = np.mean(high_pixel_values) * \
+            dicom_data_h.RescaleSlope + dicom_data_h.RescaleIntercept
+        mean_low_hu = np.mean(low_pixel_values) * \
+            dicom_data_l.RescaleSlope + dicom_data_l.RescaleIntercept
+
+     # Create HU lists
+        HU_H_List.append(mean_high_hu)
+        HU_L_List.append(mean_low_hu)
+
+    # Step 1: Optimize C for rho_e calculation
+    # Step 2: Calculate rho using c
+    for hu_h, hu_l in zip(HU_H_List, HU_L_List):
+        rho = rho_e_hunemohr(hu_h, hu_l, c)
+        calculated_rhos.append(rho)
+
+    # Step 3: Calculate true zeff
+    for mat in materials_list:
+        calculated_z = calculate_ref_zeff_hunemohr(mat)
+        calculated_zeffs.append(calculated_z)
+
+    # Step 4: Calculate optimized zeff
+    zeff_w = calculate_ref_zeff_hunemohr("True Water")
+    # zeff_w = 7
+    d_e = fit_zeff(calculated_rhos, zeff_w,
+                   calculated_zeffs, HU_H_List, HU_L_List)
+    for rhos, x1, x2 in zip(calculated_rhos, HU_H_List, HU_L_List):
+        opt_z = calculate_zeff_optimized(rhos, zeff_w, x1,  x2, d_e)
+        optimized_zs.append(opt_z)
+
+    # Step 5: Calculate Reference I and get fitted a, b
+    for material in materials_list:
+        I_ref = ref_I(material)
+        reference_I.append(I_ref)
+
+    # Step 6: Calculate Mean Excitation Energy
+    for Z in optimized_zs:
+        I_optimized = hunemohr_I(a, b, Z)
+        calculated_I.append(I_optimized)
+
+    # Step 4: Stopping power
+    for i, rho in zip(calculated_I, calculated_rhos):
+        spr_calc = spr_hunemohr(rho, i)
+        sprs.append(spr_calc)
+
+    for mat, rho in zip(materials_list, calculated_rhos):
+        print(f"Material: {mat} with electron density of {rho}")
+
+    print("\n")
+
+    for mat, z in zip(materials_list, optimized_zs):
+        print(f"Material: {mat} with Z of {z}")
+
+    print("\n")
+
+    for mat, spr in zip(materials_list, sprs):
+        print(f"Material: {mat} with SPR of {spr}")
+
+    ground_rho = []
+    for mat in materials_list:
+        ground_rho.append(MATERIAL_PROPERTIES[mat]["rho_e_w"])
+    rmse_rho = mean_squared_error(ground_rho, calculated_rhos)
+    r2_rho = r2_score(ground_rho, calculated_rhos)
+    percent_rho = mean_absolute_percentage_error(ground_rho, calculated_rhos)
+
+    ground_z = []
+    for mat in materials_list:
+        ground_z.append(MATERIAL_PROPERTIES[mat]["Z_eff"])
+    rmse_z = mean_squared_error(ground_z, optimized_zs)
+    r2_z = r2_score(ground_z, optimized_zs)
+    percent_z = mean_absolute_percentage_error(ground_z, optimized_zs)
+
+    # Return JSON
+    results = {
+        "materials": materials_list,
+        "calculated_rhos": calculated_rhos,
+        "calculated_z_effs": optimized_zs,
+        "stopping_power": sprs,
+        "error_metrics": {
+            "rho": {"RMSE": rmse_rho, "R2": r2_rho, "PercentError": percent_rho},
+            "z": {"RMSE": rmse_z, "R2": r2_z, "PercentError": percent_z}
+        }
+    }
+
+    return json.dumps(results, indent=4)
+    
 def hunemohr(high_path, low_path, phantom_type, radii_ratios):
     dicom_data_h = pydicom.dcmread(high_path)
     dicom_data_l = pydicom.dcmread(low_path)
@@ -262,6 +376,9 @@ def hunemohr(high_path, low_path, phantom_type, radii_ratios):
         "calculated_rhos": calculated_rhos,
         "calculated_z_effs": optimized_zs,
         "stopping_power": sprs,
+        "a": a,
+        "b": b,
+        "c": c,
         "error_metrics": {
             "rho": {"RMSE": rmse_rho, "R2": r2_rho, "PercentError": percent_rho},
             "z": {"RMSE": rmse_z, "R2": r2_z, "PercentError": percent_z}
